@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>{%block title%}{%endblock%}</title>
+    <style>
+        body{
+            background: burlywood;
+        }
+        h6{
+            color: black;
+            text-align: end;
+        }
+    </style>
+    </head>
+    <body>
+        <h6>Punched date is: {{server_datetime}}</h6>
+        <h6>Punched time is: {{server_datetime2}}</h6>
+        <div class="content">
+            {%block content%}{%endblock%}
+        </div>
+        <nav>
+            <div align="center">
+                <div>
+                    <h3>
+                        <a href="/">Hardik's Blog</a></h3>
+                        <h4><li>
+                            <a href="/addpost/">Add post</a>  |
+                            <a href="/accounts/logout/">Logout</a></li></h4>
+                    <hr />
+                </div>
+                <ul>
+                    <li> <a href="/signup/">Register</a>  |
+                     <a href="/accounts/login/">Already have account?</a></li>
+                </ul>
+            </div>
+        </nav>
+        {%block body_block%}
+        {%endblock%}
+    </body>
+</html>
