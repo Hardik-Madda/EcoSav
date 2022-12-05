@@ -2,23 +2,24 @@
 {%extends 'BloggingApp/base.html'%}
 {%block body_block%}
     <style>
-        h4{
+        h4,h5{
             colour: violet;
+        }
+        img{
+            width:65px;
         }
     </style>
     <h4><***Watch this space for more posts***></h4>
     <br />
+    {%include 'BloggingApp/pagination.html' with page=page_obj%}
     <ul>
-    {%for addpost1 in addpost1_list%}
-        <h2>
-            <li>
-                <a href="/{{addpost1.id}}">{{addpost1.Name|upper}}</a>
-            </li>
-        </h2>
+    {%for addpost1 in post_list%}
+        <img src="{{ addpost1.image.url }}">
+        </li></h5>
+        <a href="{{addpost1.get_absolute_url}}">{{addpost1.Name}}</a>
+        <p id='date'>Posted by # {{addpost1.Name}} @{{addpost1.email}}
+        in his own words: {{addpost1.Write_Post| truncatewords:30|linebreaks}}</p>
     {%endfor%}
-            <img src="{{ addpost1.image.url }}">
-            <h5><li>Posted by # {{addpost1.Name|upper}}   @{{addpost1.email|title}}
-in his own words: {{addpost1.Write_Post|title}}
         </li></h5>
     </ul>
 {%endblock%}

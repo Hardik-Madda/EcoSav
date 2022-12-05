@@ -27,6 +27,8 @@ urlpatterns = [
     path('signup/',views.signup_view),
     path('addpost/', views.AddPost1CreateView.as_view(), name='create'),
     path('detail/<pk>', views.AddPost1DetailView.as_view(), name='detail'),
+    re_path('^.*$', views.post_list_view),
+    path("^(?P<id>\d+)/share/$", views.mail_send_view),
     path('logout/', views.logout_view),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

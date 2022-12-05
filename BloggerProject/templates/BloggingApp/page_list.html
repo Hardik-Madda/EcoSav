@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+{%extends 'BloggingApp/base.html'%}
+{%block title%}Hardik's blog{%endblock%}
+{%block content%}
+    {%for addpost1 in post_list%}
+        <h2><a href="{{addpost1.get_absolute_url}}">{{addpost1.Name}}</a></h2>
+        <p id='date'>Posted by #{{addpost1.Name}} @{{addpost1.email}}</p>
+        in his own words:{{addpost1.body| truncatewords:30|linebreaks}}
+    {%endfor%}
+    {%include 'BloggingApp/pagination.html' with page=post_list%}
+{%endblock%}

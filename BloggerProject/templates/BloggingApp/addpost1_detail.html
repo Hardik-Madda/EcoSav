@@ -6,7 +6,29 @@
     <ul>
             <img src="{{ addpost1.image.url }}">
             <h5><li>Posted by # {{addpost1.Name|upper}}   @{{addpost1.email|title}}
-in his own words: {{addpost1.Write_Post|title}}
-        </li></h5>
+in his own words: {{addpost1.Write_Post|title}}</li></h5>
+            <li><h5>
+                {% with comments.count as comments_count%}
+        {{comments_count}}{{comments_count|pluralize}}
+    {%endwith%}
+    {%if comments %}
+        {%for comment in comments %}
+            <p id='ch'> {{forloop.counter}} by {{comment.Name}} on {{comment.commented}}</p>
+		    <div class="cb">{{comment.body|linebreaks}}</div>
+ 	    {%endfor%}
+ 	{%else%}
+ 	    <p>No comments</p>
+ 	{%endif%}
+ 	{%if csubmit %}
+		<h4>Comment added</h4>
+ 	{%else%}
+        <form method="post">
+            {{form.as_p}}
+            {%csrf_token%}
+            <a href="/{{post.id}}/share/" class="btn btn-lg btn-primary">Share  |
+            <input type="submit" name="" value="Comment"></a>
+        </form>
+ 	{%endif%}
     </ul>
+    </li></h5>
 {%endblock%}

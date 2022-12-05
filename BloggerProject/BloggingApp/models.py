@@ -21,3 +21,13 @@ class AddPost1(models.Model):
 
 	def get_absolute_url(self):
 		return reverse('detail',  kwargs={'pk': self.pk})
+
+class Comment(models.Model):
+	post = models.ForeignKey(AddPost1, related_name='comments', on_delete=models.CASCADE)
+	Name = models.CharField(max_length=32)
+	body = models.TextField()
+	commented = models.DateTimeField(auto_now_add=True)
+	class Meta:
+		ordering = ('commented',)
+	def __str__(self):
+		return "Commented By {} on {}".format(self.Name, self.post)
