@@ -1,0 +1,173 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: bisque;
+}
+
+.container{
+    position: relative;
+    max-width: 430px;
+    width: 100%;
+    background: darkorange;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 0 20px;
+}
+
+.container .forms{
+    display: flex;
+    align-items: center;
+    height:440px;
+    width: 200%;
+    transition: height 0.2s ease;
+}
+
+.container .form{
+    padding: 30px;
+    transition: margin-left 0.18s ease;
+    width: 50%;
+}
+
+.container.active .login{
+    margin-left: -50%;
+    opacity: 0;
+    transition: margin-left 0.18s ease, opacity 0.15s ease;
+}
+
+.container .signup{
+    opacity: 0;
+    transition: opacity 0.09s ease;
+}
+.container.active .signup{
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+.container.active .forms{
+    height: 600px;
+}
+
+.container .form .title{
+    position: relative;
+    font-size: 27px;
+    font-weight: 600;
+}
+
+.form .title::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height:3px;
+    width: 30px;
+    background-color: green;
+    border-radius: 25px;
+}
+
+.form .input-field{
+    position: relative;
+    margin: 8px;
+}
+
+.input-field input{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    padding: 0 35px;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid black;
+    border-top: 2px solid darkorange;
+    font-size: 13px;
+    transition: all 0.2s ease;
+}
+
+.input-field input:is(:focus, :valid){
+    border-bottom-color: black;
+}
+
+.input-field i{
+    position: relative;
+    font-size: 23px;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.2s ease;
+}
+
+.input-field input:is(:focus, :valid) ~ i{
+    color: black;
+}
+
+.input-field i.icon{
+    left:0;
+}
+
+.input-field i.showHidePw{
+    left:93%;
+    cursor: pointer;
+    padding: 6px;
+}
+
+.form .checkbox-text{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+}
+
+.checkbox-text .checkbox-content{
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-content input{
+    margin: 0 8px -2px 4px;
+    accent-color: green;
+}
+
+.form .text{
+    font-size: 14px;
+    color: black;
+}
+
+.form a.text{
+    text-decoration: none;
+}
+
+.form a:hover{
+    text-decoration: underline;
+}
+
+.form .button{
+    margin-top: 10px;  
+}
+
+.form .button input{
+    border: none;
+    color:black;
+    letter-spacing: 1px;
+    border-radius: 10px;
+    background-color: green;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.button input:hover{
+    background-color: green;
+}
+
+.form .login-signup{
+    margin-top: 15px;
+    text-align: center;
+}
